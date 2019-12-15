@@ -38,7 +38,7 @@ Except use my tracingswebapi to realize the most part of my web app, I also used
 >it will get real-time currency information about $ to any other currencies
 
 >weather report  
->http://api.openweathermap.org/data/2.5/weather?lat={}}&lon={}&APPID={}  
+>>http://api.openweathermap.org/data/2.5/weather?lat={}}&lon={}&APPID={}  
 >it will get weather information by your address (longitude and latitude)  
 
 ### About  UML Diagrams & use cases  
