@@ -13,8 +13,8 @@
                     <b-nav-item to="/users"><i class="fa fa-address-book" style="padding: 5px"> Staff</i></b-nav-item>
                 </b-navbar-nav>
                 <b-navbar-nav class="ml-auto">
-                    <b-nav-item>{{weatherDetail.weather[0].description}} in</b-nav-item>
-                    <b-nav-item>{{weatherDetail.name}}</b-nav-item>
+                    <b-nav-item v-if="weatherDetailStatus===true">{{weatherDetail.weather[0].description}} in</b-nav-item>
+                    <b-nav-item v-if="weatherDetailStatus===true">{{weatherDetail.name}}</b-nav-item>
                     <b-nav-item>IP: {{ip}}</b-nav-item>
                     <b-nav-item v-if="path==='/'"><i class="fa fa-sign-in" style="padding: 5px"> Login </i></b-nav-item>
                     <b-nav-item @click="logout" v-if="!(path==='/')"><i class="fa fa-sign-out" style="padding: 5px">
@@ -50,7 +50,8 @@ export default {
       ipDetail: [],
       currencyDetails: [],
       scrollstatus: false,
-      weatherDetail: []
+      weatherDetail: [],
+      weatherDetailStatus: false
     }
   },
   created () {
@@ -82,6 +83,7 @@ export default {
 
           axios.get('http://api.openweathermap.org/data/2.5/weather?lat=' + this.ipDetail.latitude + '&lon=' + this.ipDetail.longitude + '&APPID=a24d43b39f2df0687cd139984a2e3e46').then(response => {
             this.weatherDetail = response.data
+            this.weatherDetailStatus = true
           }).catch(error => {
             this.errors.push(error)
             console.log(error)
